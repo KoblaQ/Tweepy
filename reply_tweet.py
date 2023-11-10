@@ -1,17 +1,20 @@
 # Import Tweepy library
 import tweepy
+import authentication # Import the authentication keys from the authentication.py file.
 
 # Authorization Keys
-client = tweepy.Client(consumer_key= 'QJ08ZoceKo5BZ1dahHeI10aVz',
-                       consumer_secret= 'ePO98fE3vaSRQRwF9JOcHe1YnkglfRFqUaXhoFYyZJCs6uGwpQ',
-                         access_token= '126623839-B8RS3sniP9mhah9GZEtsSVB0Yru0BsLeMDwYmHJF' ,
-                          access_token_secret= 'VYaBthG4PzaL8c4pBNn6rSULWW9MM8OtMGaMwUyI2MvKt')
+client = tweepy.Client(consumer_key= authentication.consumer_key,
+                       consumer_secret= authentication.consumer_secret,
+                         access_token= authentication.access_token ,
+                          access_token_secret= authentication.access_token_secret)
 
-
-tweet_ID = 'insert_tweet_id'
+# Insert the Tweet ID
+tweet_ID = 'Insert_tweet_id_here'
 
 # Replying to a Tweet
 response_ReplyTweet = client.create_tweet(text= "It feels like i'm talking to myself", in_reply_to_tweet_id= tweet_ID)
 print(response_ReplyTweet)
+
+# Get the id of the reply tweet
 tweet_ID = response_ReplyTweet.data['id']
 print(tweet_ID)
